@@ -10,7 +10,9 @@ dir=~/git/dotfiles
 # TODO conditional rm
 rm ~/.vimrc
 rm ~/.zshrc
+rm ~/.tmux.conf
 
 # Creating symlinks
 ln -s $dir/vim/vimrc ~/.vimrc
-ln -s $dir/system/zshrc ~/.zshrc
+ln -s $dir/zsh/zshrc ~/.zshrc
+ln -s $dir/tmux/tmux.conf ~/.tmux.conf
