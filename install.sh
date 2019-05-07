@@ -7,8 +7,7 @@
 sudo pacman -S wget
 sudo pacman -S git
 sudo pacman -S neovim
-sudo pacman -S zsh
-sudo pacman -S zsh-completions
+sudo pacman -S zsh zsh-completions
 sudo pacman -S tmux
 
 # Installations with git

@@ -1,20 +1,88 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" ============= Plugins =============
+" Required for Vundle (nocompatible is set by deafult on nvim)
+filetype off
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-Plugin 'vimwiki/vimwiki'
+Plugin 'scrooloose/nerdtree' " File tree
+Plugin 'sjl/badwolf' " Colorscheme
+Plugin 'vim-scripts/csv.vim' " .csv files
+Plugin 'vimwiki/vimwiki' " wiki to vim
+Plugin 'itchyny/calendar.vim' " Calendar
+Plugin 'ctrlpvim/ctrlp.vim' " Full path fuzzy finder
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-syntax on
+syntax on                    " enable vim's highlighting syntax
+
+" ============= Indentation =============
+set shiftwidth=4 " Number to insert/remove for indentation commands on normal
+set softtabstop=4 " Number of spaces in tab when editing
+set tabstop=4 " Number of visual spaces per TAB read on file
+set expandtab " Turns tabs into spaces
+
+" ============= User Interface =============
+colorscheme badwolf
+set number " Show line numbers
+set relativenumber " Show relative line number
+set ruler " Display cursor position
+set cursorline " Highlight current line
+set showcmd " Show command in bottom bar
+highlight ColorColumn ctermbg=gray " 80 character indication to be toggled
+
+" ============= Search =============
+set ignorecase " Use case insensitive search
+set smartcase " Except when using capital letters
+
+" ============= Mappings =============
+nnoremap <C-t> :tabnew<CR> " Open new tab
+nnoremap <C-Left> :tabprevious<CR>
+nnoremap <C-Right> :tabnext<CR>
+nnoremap <A-1> 1gt
+nnoremap <A-2> 2gt
+nnoremap <A-3> 3gt
+nnoremap <A-4> 4gt
+nnoremap <A-5> 5gt
+
+" ============= Vimwiki =============
+let wiki_1 = {}
+let wiki_1.path = '~/Dropbox/vimwiki/professional/'
+
+let wiki_2 = {}
+let wiki_2.path = '~/Dropbox/vimwiki/system/'
+
+let wiki_3 = {}
+let wiki_3.path = '~/Dropbox/vimwiki/personal/'
+
+let g:vimwiki_list = [wiki_1, wiki_2, wiki_3]
+
+" ============= Calendar =============
+let g:calendar_cache_directory = expand('~/Dropbox/calendar.vim/')
+
+" these C-w need improvement
+nnoremap <C-W>< :vertical resize +10<CR>
+nnoremap <C-W>> :vertical resize -10<CR>
+" TODO
+
+nnoremap <F2> :let &cc = &cc == '' ? '80' : ''<CR> " Show 80 character limit
+nmap <F12> :nohlsearch<CR> " Clean highlight search
+nmap <F10> :%s/\s\+$//<CR> " Remove empty spaces
+nmap <F7> :NERDTreeToggle<CR> " Toggle tree
+let g:NERDTreeWinSize=30
+let g:NERDTreeWinPos="left"
+
+nmap <LEADER>S :w !sudo tee %<CR> " Save with sudo permission
+" Open terminal
+nmap <LEADER>t :terminal<CR> " TODO
+nmap <LEADER>d :lcd %:p:h<CR> " Set current edit file as default directory
+nmap <LEADER>v :vsplit <CR> " TODO
+nmap <LEADER>h :split <CR> " TODO
+
+" Switching keyboard layout depending on mode
+" let g:XkbSwitchEnabled = 1
