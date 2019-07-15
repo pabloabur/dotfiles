@@ -11,8 +11,10 @@ dir=~/git/dotfiles
 rm ~/.vimrc
 rm ~/.zshrc
 rm ~/.tmux.conf
+rm ~/.config/i3/config
 
 # Creating symlinks
 ln -s $dir/vim/vimrc ~/.vimrc
 ln -s $dir/zsh/zshrc ~/.zshrc
 ln -s $dir/tmux/tmux.conf ~/.tmux.conf
+ln -s $dir/i3/config ~/.config/i3/config
