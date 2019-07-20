@@ -11,5 +11,8 @@ sudo pacman -S zsh zsh-completions
 sudo pacman -S tmux, terminator
 sudo pacman -S i3-gaps, lightdm-gtk-greeter, xorg-server, xorg-xbacklight, dmenu
 
+# Programs from AUR
+yay -S termite
+
 # Installations with git
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
