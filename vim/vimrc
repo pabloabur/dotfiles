@@ -49,6 +49,8 @@ nnoremap <A-2> 2gt
 nnoremap <A-3> 3gt
 nnoremap <A-4> 4gt
 nnoremap <A-5> 5gt
+" Toggle relative number. Useful when moving/copying things around
+nnoremap <LEADER>l :set rnu!<CR>
 
 " ============= Vimwiki =============
 let wiki_1 = {}
@@ -83,6 +85,3 @@ nmap <LEADER>t :terminal<CR> " TODO
 nmap <LEADER>d :lcd %:p:h<CR> " Set current edit file as default directory
 nmap <LEADER>v :vsplit <CR> " TODO
 nmap <LEADER>h :split <CR> " TODO
-
-" Switching keyboard layout depending on mode
-" let g:XkbSwitchEnabled = 1
