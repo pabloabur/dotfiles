@@ -10,6 +10,7 @@ sudo pacman -S neovim
 sudo pacman -S zsh zsh-completions
 sudo pacman -S tmux, terminator
 sudo pacman -S i3-gaps, lightdm-gtk-greeter, xorg-server, xorg-xbacklight, dmenu
+sudo pacman -S fzf
 
 # Programs from AUR
 yay -S termite
