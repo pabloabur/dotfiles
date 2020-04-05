@@ -1,0 +1,3 @@
+set page-padding 2
+map <A-j> zoom out
+map <A-k> zoom in

@@ -1,4 +1,6 @@
+" ====================================
 " ============= Plugins =============
+" ====================================
 " Required for Vundle (nocompatible is set by deafult on nvim)
 filetype off
 
@@ -12,7 +14,6 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'sjl/badwolf' " Colorscheme
 Plugin 'vim-scripts/csv.vim' " .csv files
 Plugin 'vimwiki/vimwiki' " wiki to vim
-Plugin 'itchyny/calendar.vim' " Calendar
 Plugin 'junegunn/fzf' " command-line fuzzy finder
 Plugin 'junegunn/fzf.vim' " fzf extension for vim
 
@@ -21,13 +22,17 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 syntax on                    " enable vim's highlighting syntax
 
+" ====================================
 " ============= Indentation =============
+" ====================================
 set shiftwidth=4 " Number to insert/remove for indentation commands on normal
 set softtabstop=4 " Number of spaces in tab when editing
 set tabstop=4 " Number of visual spaces per TAB read on file
 set expandtab " Turns tabs into spaces
 
+" ====================================
 " ============= User Interface =============
+" ====================================
 colorscheme badwolf
 set number " Show line numbers
 set relativenumber " Show relative line number
@@ -36,11 +41,16 @@ set cursorline " Highlight current line
 set showcmd " Show command in bottom bar
 highlight ColorColumn ctermbg=gray " 80 character indication to be toggled
 
+" ====================================
 " ============= Search =============
+" ====================================
 set ignorecase " Use case insensitive search
 set smartcase " Except when using capital letters
 
+" ====================================
 " ============= Mappings =============
+" ====================================
+" ============= Navigation =============
 nnoremap <C-t> :tabnew<CR> " Open new tab
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
@@ -49,10 +59,59 @@ nnoremap <A-2> 2gt
 nnoremap <A-3> 3gt
 nnoremap <A-4> 4gt
 nnoremap <A-5> 5gt
-" Toggle relative number. Useful when moving/copying things around
-nnoremap <LEADER>l :set rnu!<CR>
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+" Search for files using fzf
+nnoremap <LEADER>o :Files<CR>
+" Terminal mode mappings
+" Open terminal
+nmap <LEADER>t :botright 10split +terminal<CR>
+tnoremap <Esc> <C-\><C-n>
+tnoremap <A-h> <C-\><C-N><C-w>h
+tnoremap <A-j> <C-\><C-N><C-w>j
+tnoremap <A-k> <C-\><C-N><C-w>k
+tnoremap <A-l> <C-\><C-N><C-w>l
 
+" ============= Appearance =============
+" Toggle relative number. Useful when moving/copying things
+" around
+nmap <LEADER>l :set rnu!<CR>
+
+" ============= Special operations =============
+" Create ctags for current folder
+nmap <LEADER>ct :!ctags -R .<CR>
+" Show 80 character limit
+nmap <F2> :let &cc = &cc == '' ? '80' : ''<CR>
+" Clean highlight search
+nmap <F12> :nohlsearch<CR>
+" Remove empty spaces
+nmap <F10> :%s/\s\+$//<CR>
+" Save with sudo permission
+nmap <LEADER>S :w !sudo tee %<CR>
+" Set current edit file as default directory
+nmap <LEADER>d :lcd %:p:h<CR>
+" Open netrw
+nmap <LEADER>n :30vs.<CR>
+" Replace all and confirm
+nnoremap S :%s///gc<left><left><left>
+
+" ============= Speed typing =============
+" Press crtl-v to use single
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap < <><left>
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ' ''<left>
+inoremap ;a <ESC>A:<CR>
+inoremap ;d <ESC>o
+
+" ====================================
 " ============= Vimwiki =============
+" ====================================
 let wiki_1 = {}
 let wiki_1.path = '~/Dropbox/vimwiki/professional/'
 
@@ -62,26 +121,7 @@ let wiki_2.path = '~/Dropbox/vimwiki/system/'
 let wiki_3 = {}
 let wiki_3.path = '~/Dropbox/vimwiki/personal/'
 
-let g:vimwiki_list = [wiki_1, wiki_2, wiki_3]
+let wiki_4 = {}
+let wiki_4.path = '~/Dropbox/vimwiki/notes/'
 
-" ============= Calendar =============
-let g:calendar_cache_directory = expand('~/Dropbox/calendar.vim/')
-
-" these C-w need improvement
-nnoremap <C-W>< :vertical resize +10<CR>
-nnoremap <C-W>> :vertical resize -10<CR>
-" TODO
-
-nnoremap <F2> :let &cc = &cc == '' ? '80' : ''<CR> " Show 80 character limit
-nmap <F12> :nohlsearch<CR> " Clean highlight search
-nmap <F10> :%s/\s\+$//<CR> " Remove empty spaces
-nmap <F7> :NERDTreeToggle<CR> " Toggle tree
-let g:NERDTreeWinSize=30
-let g:NERDTreeWinPos="left"
-
-nmap <LEADER>S :w !sudo tee %<CR> " Save with sudo permission
-" Open terminal
-nmap <LEADER>t :terminal<CR> " TODO
-nmap <LEADER>d :lcd %:p:h<CR> " Set current edit file as default directory
-nmap <LEADER>v :vsplit <CR> " TODO
-nmap <LEADER>h :split <CR> " TODO
+let g:vimwiki_list = [wiki_1, wiki_2, wiki_3, wiki_4]

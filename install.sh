@@ -11,6 +11,10 @@ sudo pacman -S zsh zsh-completions
 sudo pacman -S tmux, terminator
 sudo pacman -S i3-gaps, lightdm-gtk-greeter, xorg-server, xorg-xbacklight, dmenu
 sudo pacman -S fzf
+sudo pacman -S libreoffice
+sudo pacman -S xrandr
+sudo pacman -S tk
+sudo pacman -S nm-connection-editor
 
 # Programs from AUR
 yay -S termite

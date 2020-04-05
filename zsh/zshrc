@@ -91,7 +91,13 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias vim="nvim -u ~/.vimrc"
+
+# Enable vi mode
+export KEYTIMEOUT=1 # Recomended
+bindkey -v
+
+# Enable autocomplete for hidden files
+_comp_options+=(globdots)
 
 # Do ls right after a cd(https://stackoverflow.com/questions/3964068/zsh-automatically-run-ls-after-every-cd)
 function chpwd() {
