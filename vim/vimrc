@@ -16,6 +16,7 @@ Plugin 'vim-scripts/csv.vim' " .csv files
 Plugin 'vimwiki/vimwiki' " wiki to vim
 Plugin 'junegunn/fzf' " command-line fuzzy finder
 Plugin 'junegunn/fzf.vim' " fzf extension for vim
+Plugin 'tpope/vim-surround' " Surround text with symbols
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -106,8 +107,7 @@ inoremap < <><left>
 inoremap " ""<left>
 inoremap ' ''<left>
 inoremap ' ''<left>
-inoremap ;a <ESC>A:<CR>
-inoremap ;d <ESC>o
+inoremap ;l <right>
 
 " ====================================
 " ============= Vimwiki =============

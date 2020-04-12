@@ -92,9 +92,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Enable vi mode
-export KEYTIMEOUT=1 # Recomended
-bindkey -v
+## Enable vi mode
+#export KEYTIMEOUT=1 # Recomended
+#bindkey -v
 
 # Enable autocomplete for hidden files
 _comp_options+=(globdots)
