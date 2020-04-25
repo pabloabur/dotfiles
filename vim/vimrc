@@ -41,6 +41,7 @@ set ruler " Display cursor position
 set cursorline " Highlight current line
 set showcmd " Show command in bottom bar
 highlight ColorColumn ctermbg=gray " 80 character indication to be toggled
+set clipboard+=unnamedplus
 
 " ====================================
 " ============= Search =============
@@ -52,7 +53,7 @@ set smartcase " Except when using capital letters
 " ============= Mappings =============
 " ====================================
 " ============= Navigation =============
-nnoremap <C-t> :tabnew<CR> " Open new tab
+nnoremap <C-t> :tabnew<CR>
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 nnoremap <A-1> 1gt
@@ -66,14 +67,7 @@ nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 " Search for files using fzf
 nnoremap <LEADER>o :Files<CR>
-" Terminal mode mappings
-" Open terminal
-nmap <LEADER>t :botright 10split +terminal<CR>
-tnoremap <Esc> <C-\><C-n>
-tnoremap <A-h> <C-\><C-N><C-w>h
-tnoremap <A-j> <C-\><C-N><C-w>j
-tnoremap <A-k> <C-\><C-N><C-w>k
-tnoremap <A-l> <C-\><C-N><C-w>l
+nnoremap <LEADER>O :Files ~/<CR>
 
 " ============= Appearance =============
 " Toggle relative number. Useful when moving/copying things
@@ -92,11 +86,16 @@ nmap <F10> :%s/\s\+$//<CR>
 " Save with sudo permission
 nmap <LEADER>S :w !sudo tee %<CR>
 " Set current edit file as default directory
-nmap <LEADER>d :lcd %:p:h<CR>
+nmap <LEADER>d :cd %:h<CR>
 " Open netrw
 nmap <LEADER>n :30vs.<CR>
 " Replace all and confirm
 nnoremap S :%s///gc<left><left><left>
+nmap <F9> :w<CR>:silent! $close<CR>:botright 10split +terminal<CR>i ./run.sh<CR>
+imap <F9> <esc>:w<CR>:silent! $close<CR>:botright 10split +terminal<CR>i ./run.sh<CR>
+" Escape terminal and get back to previous tab
+tnoremap <Esc> <C-\><C-n>
+tnoremap <Tab> <C-\><C-n><C-w>p
 
 " ============= Speed typing =============
 " Press crtl-v to use single
