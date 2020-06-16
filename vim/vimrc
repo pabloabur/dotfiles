@@ -17,6 +17,8 @@ Plugin 'vimwiki/vimwiki' " wiki to vim
 Plugin 'junegunn/fzf' " command-line fuzzy finder
 Plugin 'junegunn/fzf.vim' " fzf extension for vim
 Plugin 'tpope/vim-surround' " Surround text with symbols
+Plugin 'unblevable/quick-scope'
+Plugin 'nvie/vim-flake8'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -30,10 +32,15 @@ set shiftwidth=4 " Number to insert/remove for indentation commands on normal
 set softtabstop=4 " Number of spaces in tab when editing
 set tabstop=4 " Number of visual spaces per TAB read on file
 set expandtab " Turns tabs into spaces
+" autoindent is on and fileformat is unix by default on neovim
 
 " ====================================
 " ============= User Interface =============
 " ====================================
+" Explicitly set latex filetypes to avoid doing it on 
+" the files. More information here:
+" https://vi.stackexchange.com/questions/23098/difference-between-tex-and-plaintex-vim-file-type
+let g:tex_flavor = "latex"
 colorscheme badwolf
 set number " Show line numbers
 set relativenumber " Show relative line number
@@ -42,6 +49,10 @@ set cursorline " Highlight current line
 set showcmd " Show command in bottom bar
 highlight ColorColumn ctermbg=gray " 80 character indication to be toggled
 set clipboard+=unnamedplus
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+set completeopt=menuone,preview,noselect
+autocmd FileType vimwiki setlocal tw=57
+autocmd FileType tex setlocal tw=57
 
 " ====================================
 " ============= Search =============
@@ -52,10 +63,9 @@ set smartcase " Except when using capital letters
 " ====================================
 " ============= Mappings =============
 " ====================================
+
 " ============= Navigation =============
 nnoremap <C-t> :tabnew<CR>
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
 nnoremap <A-1> 1gt
 nnoremap <A-2> 2gt
 nnoremap <A-3> 3gt
@@ -65,6 +75,7 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
+tnoremap <A-k> <C-\><C-N><C-w>k
 " Search for files using fzf
 nnoremap <LEADER>o :Files<CR>
 nnoremap <LEADER>O :Files ~/<CR>
@@ -72,11 +83,12 @@ nnoremap <LEADER>O :Files ~/<CR>
 " ============= Appearance =============
 " Toggle relative number. Useful when moving/copying things
 " around
-nmap <LEADER>l :set rnu!<CR>
+nmap <LEADER>lt :set rnu!<CR>
 
 " ============= Special operations =============
 " Create ctags for current folder
-nmap <LEADER>ct :!ctags -R .<CR>
+nnoremap y "+y
+nmap <LEADER>c :!ctags -R .<CR>
 " Show 80 character limit
 nmap <F2> :let &cc = &cc == '' ? '80' : ''<CR>
 " Clean highlight search
@@ -84,18 +96,19 @@ nmap <F12> :nohlsearch<CR>
 " Remove empty spaces
 nmap <F10> :%s/\s\+$//<CR>
 " Save with sudo permission
-nmap <LEADER>S :w !sudo tee %<CR>
+cmap w!! w !sudo -S tee > /dev/null %
 " Set current edit file as default directory
 nmap <LEADER>d :cd %:h<CR>
 " Open netrw
 nmap <LEADER>n :30vs.<CR>
 " Replace all and confirm
-nnoremap S :%s///gc<left><left><left>
-nmap <F9> :w<CR>:silent! $close<CR>:botright 10split +terminal<CR>i ./run.sh<CR>
-imap <F9> <esc>:w<CR>:silent! $close<CR>:botright 10split +terminal<CR>i ./run.sh<CR>
-" Escape terminal and get back to previous tab
+nmap <LEADER>s :%s///gc<left><left><left><left>
+nmap <F9> :w<CR> :silent! only<CR>:botright 10split +terminal<CR>i source run.sh<CR>
+imap <F9> <esc>:w<CR> :silent! only<CR>:botright 10split +terminal<CR>i source run.sh<CR>
+nmap <LEADER>t :botright 10split +terminal<CR>i
+nmap <LEADER>T :silent! only<CR>
+" Escape terminal
 tnoremap <Esc> <C-\><C-n>
-tnoremap <Tab> <C-\><C-n><C-w>p
 
 " ============= Speed typing =============
 " Press crtl-v to use single
