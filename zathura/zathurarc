@@ -1,3 +1,4 @@
 set page-padding 2
+set selection-clipboard clipboard
 map <A-j> zoom out
 map <A-k> zoom in
