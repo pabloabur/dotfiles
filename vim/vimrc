@@ -19,6 +19,8 @@ Plugin 'junegunn/fzf.vim' " fzf extension for vim
 Plugin 'tpope/vim-surround' " Surround text with symbols
 Plugin 'unblevable/quick-scope'
 Plugin 'nvie/vim-flake8'
+Plugin 'vim-airline/vim-airline'
+Plugin 'tpope/vim-fugitive'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
