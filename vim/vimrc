@@ -21,6 +21,8 @@ Plugin 'unblevable/quick-scope'
 Plugin 'nvie/vim-flake8'
 Plugin 'vim-airline/vim-airline'
 Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'jpalardy/vim-slime'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -47,13 +49,24 @@ colorscheme badwolf
 set number " Show line numbers
 set relativenumber " Show relative line number
 set ruler " Display cursor position
-set cursorline " Highlight current line
+" Highlight current line and appearances
+set cursorline
+hi CursorLineNr cterm=bold
 set showcmd " Show command in bottom bar
 highlight ColorColumn ctermbg=gray " 80 character indication to be toggled
 set clipboard+=unnamedplus
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 set completeopt=menuone,preview,noselect
 " autocmd FileType vimwiki setlocal tw=57 keept this for reference
+let g:airline#extensions#tabline#enabled = 1
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+" Show buffer names when tabs are active
+let g:airline#extensions#tabline#show_tabs = 0
+let g:airline_section_warning = 0
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:slime_target = "neovim"
+let g:slime_python_ipython = 1
 
 " ====================================
 " ============= Search =============
@@ -112,6 +125,13 @@ nmap <LEADER>T :silent! only<CR>
 tnoremap <Esc> <C-\><C-n>
 " Paste without losing value in register
 vmap p "_dP
+" Allows undo after switching buffers (remember to create undodir)
+set undofile
+set undodir=$HOME/.vim/undo
+set undolevels=1000
+set undoreload=10000
+" Shortcut for python pdb
+nnoremap <LEADER>db oimport pdb;pdb.set_trace()<Esc>
 
 " ============= Speed typing =============
 " Press crtl-v to use single
@@ -128,6 +148,9 @@ inoremap <C-space> <right>
 " ====================================
 let wiki_1 = {}
 let wiki_1.path = '~/Dropbox/vimwiki/professional/'
+let wiki_1.template_path = '~/Dropbox/vimwiki/templates/'
+let wiki_1.template_default = 'default'
+let wiki_1.template_ext = '.html'
 
 let wiki_2 = {}
 let wiki_2.path = '~/Dropbox/vimwiki/system/'
@@ -137,6 +160,9 @@ let wiki_3.path = '~/Dropbox/vimwiki/personal/'
 
 let wiki_4 = {}
 let wiki_4.path = '~/Dropbox/vimwiki/notes/'
+let wiki_4.template_path = '~/Dropbox/vimwiki/templates/'
+let wiki_4.template_default = 'default'
+let wiki_4.template_ext = '.html'
 
 let g:vimwiki_list = [wiki_1, wiki_2, wiki_3, wiki_4]
 let  g:vimwiki_dir_link = 'index'
