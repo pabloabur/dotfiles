@@ -59,6 +59,9 @@ set completeopt=menuone,preview,noselect
 set ignorecase " Use case insensitive search
 set smartcase " Except when using capital letters
 
+" Problem with SHADA
+set viminfo='1000,f1,\"500,:1000,%,n~/.viminfo
+
 " ====================================
 " ============= Mappings =============
 " ====================================
@@ -85,8 +88,8 @@ nnoremap <LEADER>O :Files ../<CR>
 nmap <LEADER>lt :set rnu!<CR>
 
 " ============= Special operations =============
-" Create ctags for current folder
 nnoremap y "+y
+" Create ctags for current folder
 nmap <LEADER>c :!ctags -R .<CR>
 " Show 80 character limit
 nmap <F2> :let &cc = &cc == '' ? '80' : ''<CR>
