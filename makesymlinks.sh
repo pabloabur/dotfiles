@@ -13,6 +13,7 @@ rm ~/.zshrc
 rm ~/.tmux.conf
 rm ~/.config/i3/config
 rm ~/.config/zathura/zathurarc
+rm ~/.pdbrc
 
 rm ~/.config/ranger/commands.py
 rm ~/.config/ranger/commands_full.py
@@ -26,6 +27,7 @@ ln -s $dir/zsh/zshrc ~/.zshrc
 ln -s $dir/tmux/tmux.conf ~/.tmux.conf
 ln -s $dir/i3/config ~/.config/i3/config
 ln -s $dir/zathura/zathurarc ~/.config/zathura/zathurarc
+ln -s $dir/python/pdbrc ~/.pdbrc
 
 ln -s $dir/ranger/commands.py ~/.config/ranger/commands.py
 ln -s $dir/ranger/commands_full.py ~/.config/ranger/commands_full.py
