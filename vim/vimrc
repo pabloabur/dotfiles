@@ -118,8 +118,9 @@ cmap w!! w !sudo -S tee > /dev/null %
 nmap <LEADER>d :cd %:h<CR>
 " Open netrw
 nmap <LEADER>n :30vs.<CR>
-" Replace all and confirm
-nmap <LEADER>s :%s///gc<left><left><left><left>
+" Replace all. Particularly useful after searching for a pattern
+nmap <LEADER>s :%s///gc<left><left><left>
+xmap <LEADER>s :s///gc<left><left><left>
 nmap <F9> :w<CR> :silent! only<CR>:botright 10split +terminal<CR>i source run.sh<CR>
 imap <F9> <esc>:w<CR> :silent! only<CR>:botright 10split +terminal<CR>i source run.sh<CR>
 nmap <LEADER>t :botright 10split +terminal<CR>i
@@ -135,6 +136,9 @@ set undolevels=1000
 set undoreload=10000
 " Shortcut for python pdb
 nnoremap <LEADER>db oimport pdb;pdb.set_trace()<Esc>
+" Managing tasks with Vimwiki
+xmap <LEADER>vwi d :VimwikiMakeDiaryNote<CR> P`]o<Esc>
+xmap <LEADER>vwf y :VimwikiIndex<CR> :VimwikiNextLink<CR> :VimwikiFollowLink<CR> Pjv`] :g/\[X\]/d<CR>
 
 " ============= Speed typing =============
 " Press crtl-v to use single
