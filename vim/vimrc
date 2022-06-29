@@ -124,7 +124,6 @@ xmap <LEADER>s :s///gc<left><left><left>
 nmap <F9> :w<CR> :silent! only<CR>:botright 10split +terminal<CR>i source run.sh<CR>
 imap <F9> <esc>:w<CR> :silent! only<CR>:botright 10split +terminal<CR>i source run.sh<CR>
 nmap <LEADER>t :botright 10split +terminal<CR>i
-nmap <LEADER>T :silent! only<CR>
 " Escape terminal
 tnoremap <Esc> <C-\><C-n>
 " Paste without losing value in register
