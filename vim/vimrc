@@ -138,6 +138,20 @@ nnoremap <LEADER>db oimport pdb;pdb.set_trace()<Esc>
 " Managing tasks with Vimwiki
 xmap <LEADER>vwi d :VimwikiMakeDiaryNote<CR> P`]o<Esc>
 xmap <LEADER>vwf y :VimwikiIndex<CR> :VimwikiNextLink<CR> :VimwikiFollowLink<CR> Pjv`] :g/\[X\]/d<CR>
+" Avoid getting into terminal buffer when navigating
+autocmd BufLeave * if &buftype=="terminal" | setlocal nobuflisted | endif
+"function! PrevBufferTab()
+"  bprev
+"  if &buftype == 'terminal'
+"    bprev
+"  endif
+"endfunction
+"function! NextBufferTab()
+"  bnext
+"  if &buftype == 'terminal'
+"    bnext
+"  endif
+"endfunction
 
 " ============= Speed typing =============
 " Press crtl-v to use single
