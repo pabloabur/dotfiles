@@ -135,6 +135,8 @@ set undolevels=1000
 set undoreload=10000
 " Shortcut for python pdb
 nnoremap <LEADER>db oimport pdb;pdb.set_trace()<Esc>
+nmap <LEADER>dbf :e ~/.pdbrc<CR>
+nmap <LEADER>gln :redir @+ <Bar> nu <Bar> redir END<CR>
 " Managing tasks with Vimwiki
 xmap <LEADER>vwi d :VimwikiMakeDiaryNote<CR> P`]o<Esc>
 xmap <LEADER>vwf y :VimwikiIndex<CR> :VimwikiNextLink<CR> :VimwikiFollowLink<CR> Pjv`] :g/\[X\]/d<CR>
