@@ -23,6 +23,17 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'jpalardy/vim-slime'
+Plugin 'mbbill/undotree'
+Plugin 'nvim-treesitter/nvim-treesitter'
+Plugin 'nvim-treesitter/nvim-treesitter-context'
+Plugin 'numToStr/Comment.nvim'
+Plugin 'VonHeikemen/lsp-zero.nvim'
+Plugin 'neovim/nvim-lspconfig'
+Plugin 'hrsh7th/nvim-cmp'
+Plugin 'hrsh7th/cmp-nvim-lsp'
+Plugin 'L3MON4D3/LuaSnip'
+Plugin 'williamboman/mason.nvim'
+Plugin 'williamboman/mason-lspconfig.nvim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -96,6 +107,9 @@ tnoremap <A-k> <C-\><C-N><C-w>k
 " Search for files using fzf
 nnoremap <LEADER>o :Files<CR>
 nnoremap <LEADER>O :Files ../<CR>
+" For easy merge conflicts with fugitive
+nnoremap <LEADER>a :diffget //2<CR>
+nnoremap <LEADER>f :diffget //3<CR>
 
 " ============= Appearance =============
 " Toggle relative number. Useful when moving/copying things
@@ -152,6 +166,30 @@ autocmd BufLeave * if &buftype=="terminal" | setlocal nobuflisted | endif
 "    bnext
 "  endif
 "endfunction
+
+" ============= Extra configs =============
+lua require('Comment').setup()
+lua << EOF
+local lsp = require('lsp-zero').preset({})
+
+manage_nvim_cmp = {
+  set_sources = 'lsp',
+  set_basic_mappings = true,
+  set_extra_mappings = true,
+  use_luasnip = true,
+  set_format = true,
+  documentation_window = true,
+}
+
+lsp.on_attach(function(client, bufnr)
+  lsp.default_keymaps({buffer = bufnr})
+end)
+
+-- (Optional) Configure lua language server for neovim
+require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+
+lsp.setup()
+EOF
 
 " ============= Speed typing =============
 " Press crtl-v to use single
