@@ -25,9 +25,8 @@ vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
 
 --Paste without losing value in register
 vim.keymap.set('v', 'p', '\"_dP')
-vim.keymap.set('n', '<leader>y', '\"+y')
-vim.keymap.set('v', '<leader>y', '\"+y')
-vim.keymap.set('t', '<leader>y', '\"+y')
+vim.keymap.set({'n', 'v', 't'}, '<leader>y', '\"+y')
+vim.keymap.set({'n', 'v', 't'}, '<leader>p', '\"+p')
 
 vim.keymap.set('i', '(', '()<left>')
 vim.keymap.set('i', '[', '[]<left>')
