@@ -8,7 +8,16 @@ dir=~/git/dotfiles
 
 # Getting rid of old links
 # TODO conditional rm
-rm ~/.vimrc
+rm ~/.vim/vimrc
+rm ~/.config/nvim/init.lua
+rm ~/.config/nvim/lua/configs/remap.lua
+rm ~/.config/nvim/lua/configs/packer.lua
+rm ~/.config/nvim/lua/configs/set.lua
+rm ~/.config/nvim/after/plugin/telescope.lua
+rm ~/.config/nvim/after/plugin/treesitter.lua
+rm ~/.config/nvim/after/plugin/comment.lua
+rm ~/.config/nvim/after/plugin/lsp.lua
+rm ~/.config/nvim/after/plugin/vimslime.lua
 rm ~/.zshrc
 rm ~/.tmux.conf
 rm ~/.config/i3/config
@@ -22,7 +31,19 @@ rm ~/.config/ranger/rifle.conf
 rm ~/.config/ranger/scope.sh
 
 # Creating symlinks
-ln -s $dir/vim/vimrc ~/.vimrc
+ln -s $dir/vim/vimrc ~/.vim/vimrc
+ln -s $dir/nvim/init.lua ~/.config/nvim/init.lua
+ln -s $dir/nvim/remap.lua ~/.config/nvim/lua/configs/remap.lua
+ln -s $dir/nvim/set.lua ~/.config/nvim/lua/configs/set.lua
+ln -s $dir/nvim/packer.lua ~/.config/nvim/lua/configs/packer.lua
+ln -s $dir/nvim/telescope.lua ~/.config/nvim/after/plugin/telescope.lua
+ln -s $dir/nvim/treesitter.lua ~/.config/nvim/after/plugin/treesitter.lua
+ln -s $dir/nvim/comment.lua ~/.config/nvim/after/plugin/comment.lua
+ln -s $dir/nvim/lsp.lua ~/.config/nvim/after/plugin/lsp.lua
+ln -s $dir/nvim/vimslime.lua ~/.config/nvim/after/plugin/vimslime.lua
+echo 'require("configs.remap")' > ~/.config/nvim/lua/configs/init.lua
+echo 'require("configs.packer")' >> ~/.config/nvim/lua/configs/init.lua
+echo 'require("configs.set")' >> ~/.config/nvim/lua/configs/init.lua
 ln -s $dir/zsh/zshrc ~/.zshrc
 ln -s $dir/tmux/tmux.conf ~/.tmux.conf
 ln -s $dir/i3/config ~/.config/i3/config

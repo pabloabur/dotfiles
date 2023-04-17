@@ -172,16 +172,7 @@ autocmd BufLeave * if &buftype=="terminal" | setlocal nobuflisted | endif
 " ============= Extra configs =============
 lua require('Comment').setup()
 lua << EOF
-local lsp = require('lsp-zero').preset({})
-
-manage_nvim_cmp = {
-  set_sources = 'lsp',
-  set_basic_mappings = true,
-  set_extra_mappings = true,
-  use_luasnip = true,
-  set_format = true,
-  documentation_window = true,
-}
+local lsp = require('lsp-zero').preset({'recommended'})
 
 lsp.on_attach(function(client, bufnr)
   lsp.default_keymaps({buffer = bufnr})
@@ -191,6 +182,21 @@ end)
 require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 
 lsp.setup()
+
+local cmp = require('cmp')
+local cmp_action = require('lsp-zero').cmp_action()
+
+cmp.setup({
+  mapping = {
+    ['<C-f>'] = cmp_action.luasnip_jump_forward(),
+    ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+  },
+  sources = {
+    {name = 'buffer'},
+    {name = 'nvim_lsp'},
+    {name = 'luasnip'},
+  }
+})
 EOF
 
 " ============= Speed typing =============
@@ -202,6 +208,7 @@ inoremap < <><left>
 inoremap " ""<left>
 inoremap ' ''<left>
 inoremap <C-space> <right>
+inoremap $ $$<left>
 
 " ====================================
 " ============= Vimwiki =============
