@@ -1,0 +1,7 @@
+
+[editor]
+line-number = "relative"
+
+[keys.insert]
+C-c = "normal_mode"
+C-space = "move_char_right"
