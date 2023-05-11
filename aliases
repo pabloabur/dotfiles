@@ -1,0 +1,1 @@
+git status | tee /dev/tty | grep modified | awk '{print $2}' | dmenu | xargs git add
