@@ -9,6 +9,7 @@ return require('packer').startup(function(use)
     }
 
     use({'rose-pine/neovim', as = 'rose-pine' })
+    -- use 'rebelot/kanagawa.nvim'
     vim.cmd('colorscheme rose-pine')
 
     use{'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
@@ -47,6 +48,7 @@ return require('packer').startup(function(use)
     }
 
     use{'jpalardy/vim-slime'}
+    use 'airblade/vim-gitgutter'
     use{'vimwiki/vimwiki',
         config = function()
             vim.g.vimwiki_list = {
