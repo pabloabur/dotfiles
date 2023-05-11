@@ -1,5 +1,7 @@
 sticky
 alias pb bin(%1[0])
+alias pd dir(%1)
+alias pv vars(%1)
 #import matplotlib.pyplot as plt
 #b simulations/sleep_normalization.py:379
 #c
