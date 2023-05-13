@@ -9,6 +9,7 @@ dir=~/git/dotfiles
 # Getting rid of old links
 # TODO conditional rm
 rm ~/.vim/vimrc
+rm ~/.config/helix/config.toml
 rm ~/.config/nvim/init.lua
 rm ~/.config/nvim/lua/configs/remap.lua
 rm ~/.config/nvim/lua/configs/packer.lua
@@ -32,6 +33,7 @@ rm ~/.config/ranger/scope.sh
 
 # Creating symlinks
 ln -s $dir/vim/vimrc ~/.vim/vimrc
+ln -s $dir/helix/config.toml ~/.config/helix
 ln -s $dir/nvim/init.lua ~/.config/nvim/init.lua
 ln -s $dir/nvim/remap.lua ~/.config/nvim/lua/configs/remap.lua
 ln -s $dir/nvim/set.lua ~/.config/nvim/lua/configs/set.lua

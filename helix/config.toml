@@ -1,0 +1,10 @@
+[editor]
+line-number = "relative"
+
+[editor.soft-wrap]
+enable = true
+wrap-at-text-width = true
+
+[keys.insert]
+C-c = "normal_mode"
+C-space = "move_char_right"
