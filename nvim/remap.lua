@@ -1,3 +1,7 @@
+-- git mergetool
+vim.keymap.set('n', '<leader>gh', ':diffget LOCAL')
+vim.keymap.set('n', '<leader>gl', ':diffget REMOTE')
+
 vim.keymap.set('n', '<C-t>', ':tabnew<CR>')
 vim.keymap.set('n', '<leader>a', ':diffget //2<CR>')
 vim.keymap.set('n', '<leader>f', ':diffget //3<CR>')
