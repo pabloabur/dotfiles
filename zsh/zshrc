@@ -34,6 +34,7 @@ export QSYS_ROOTDIR="/home/pablo/.cache/yay/quartus-free/pkg/quartus-free/opt/al
 
 alias ls='ls -G'
 alias v='nvim'
+source ~/git/dotfiles/zsh/aliases.sh
 alias c='calcurse -D ~/Dropbox/calendar'
 alias ran='ranger'
 alias python='python3.10'
