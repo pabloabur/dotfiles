@@ -34,6 +34,7 @@ export QSYS_ROOTDIR="/home/pablo/.cache/yay/quartus-free/pkg/quartus-free/opt/al
 
 alias ls='ls --color=auto'
 alias v='nvim'
+source ~/git/dotfiles/zsh/aliases.sh
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

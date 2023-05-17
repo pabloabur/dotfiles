@@ -1,2 +1,0 @@
-git status | tee /dev/tty | grep modified | awk '{print $2}' | dmenu | xargs git add
-git status | grep -A 50 '(use ' | awk 'NR>2 {print last} {last=$0}'
