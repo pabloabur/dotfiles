@@ -185,7 +185,7 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightne
 # Applications start-up
 exec --no-startup-id dropbox
 exec --no-startup-id nm-applet
-#exec_always --no-startup-id nitrogen --set-scaled --random ~/Wallpapers/
+exec_always --no-startup-id nitrogen --set-scaled --random ~/Wallpapers/
 exec_always --no-startup-id picom -b
 
 # Start i3bar to display a workspace bar (plus the system information i3status
