@@ -1,6 +1,6 @@
 alias gts='git status'
 
-alias gtc='git commit -m'
+alias gtc='git commit'
 
 alias gtco='git checkout'
 
