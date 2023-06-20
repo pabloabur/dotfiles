@@ -24,6 +24,6 @@ vim.opt.undoreload = 10000
 vim.opt.swapfile = false
 vim.opt.backup = false
 
-vim.g.mapleader = "\\"
+vim.g.mapleader = " "
 
 vim.g.qs_highlight_on_keys = {'f', 'F', 't', 'T'}
