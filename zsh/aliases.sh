@@ -16,6 +16,6 @@ alias gtd='git status | grep modified | awk '\''{print $2}'\'' | fzf-tmux -m -p 
 
 alias gtpl='git pull'
 
-alias gtph='git status | grep 'On branch' | awk '{print $3}' | git push origin'
+alias gtph='git status | grep 'On branch' | awk '\''{print $3}'\'' | git push origin'
 
 alias gtmt='git mergetool --tool=nvimdiff2'
