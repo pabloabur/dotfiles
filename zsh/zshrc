@@ -30,7 +30,7 @@ function chpwd() {
     ls --color=auto
 }
 
-export QSYS_ROOTDIR="/home/pablo/.cache/yay/quartus-free/pkg/quartus-free/opt/altera/19.1/quartus/sopc_builder/bin"
+export QSYS_ROOTDIR="/home/pablo/.cache/paru/clone/quartus-free/pkg/quartus-free-quartus/opt/intelFPGA/21.1/quartus/sopc_builder/bin"
 
 alias ls='ls --color=auto'
 alias v='nvim'
