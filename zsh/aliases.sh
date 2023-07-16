@@ -17,6 +17,6 @@ alias gtdm='git status | grep modified | awk '\''{print $2}'\'' | sed '\''s/\[m/
 
 alias gtpl='git pull'
 
-alias gtph='git brach --show-current | git push origin'
+alias gtph='git branch --show-current | git push origin'
 
 alias gtmt='git mergetool --tool=nvimdiff2'
