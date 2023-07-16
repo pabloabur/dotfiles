@@ -10,4 +10,6 @@ for commit_hash in "${commit_hashes[@]}"; do
     git cherry-pick "$commit_hash"
 done
 
+git push origin $target_branch
+
 git checkout -
