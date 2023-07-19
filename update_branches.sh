@@ -2,7 +2,7 @@
 target_branch="$1"
 num_commits="$2"
 
-commit_hashes=($(git log --format='%H' --reverse -n ${num_commits} master))
+commit_hashes=($(git log --format='%H' --reverse -n ${num_commits}))
 
 git checkout "$target_branch"
 
