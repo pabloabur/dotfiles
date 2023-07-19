@@ -1,2 +1,17 @@
 sticky
-import matplotlib.pyplot as plt
+alias pb bin(%1[0])
+alias pd dir(%1)
+alias pv vars(%1)
+
+# line plot, with index, and slice
+alias pl plt.clear_figure();;plt.plot(%1.t[%4:%5]/ms, %1.%2[%6][%4:%5]/%3);;plt.show()
+
+# plot distribution of weights converging into a neuron
+alias fiwd plt.clear_figure();;plt.hist(np.array(stdp_synapse.w_plast/mV)[stdp_synapse.j==%1]);;plt.show()
+
+# plot converging weights into a neuron over time
+alias fiwt plt.clear_figure();; for x in range(np.shape(statemon_post_synapse.w_plast[stdp_synapse.j==%1, :])[0]): plt.plot(statemon_post_synapse.t[%2:%3]/ms, np.array(statemon_post_synapse.w_plast/mV)[stdp_synapse.j==%1, :][x, %2:%3]);;plt.show()
+
+#import matplotlib.pyplot as plt
+#b simulations/sleep_normalization.py:379
+#c
