@@ -16,6 +16,8 @@ urls=(
     "git@github.com:echasnovski/mini.surround.git"
     
     "git@github.com:echasnovski/mini.completion.git"
+
+    "git@github.com:Exafunction/codeium.vim.git"
 )
 
 folder_urls=(
@@ -28,6 +30,7 @@ folder_urls=(
     "vimwiki|vimwiki.git"
     "surround|mini.surround.git"
     "completion|mini.completion.git"
+    "codeium|codeium.vim.git"
 )
 
 root_folder=~/.config/nvim/pack
