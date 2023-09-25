@@ -12,10 +12,11 @@ alias gtl='git log -p'
 alias gtls='git log --stat'
 alias gtlg='git log --oneline --decorate --all --graph'
 
-alias gtd='git status | grep modified | awk '\''{print $2}'\'' | fzf-tmux -m -p | xargs git diff'
+alias gtd='git diff'
+alias gtdm='git status | grep modified | awk '\''{print $2}'\'' | sed '\''s/\[m//'\'' | fzf-tmux -m -p | xargs git diff'
 
 alias gtpl='git pull'
 
-alias gtph='git status | grep 'On branch' | awk '\''{print $3}'\'' | git push origin'
+alias gtph='git branch --show-current | git push origin'
 
 alias gtmt='git mergetool --tool=nvimdiff2'
