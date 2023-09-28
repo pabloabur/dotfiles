@@ -38,3 +38,6 @@ ln -s $dir/ranger/commands_full.py ~/.config/ranger/commands_full.py
 ln -s $dir/ranger/rc.conf ~/.config/ranger/rc.conf
 ln -s $dir/ranger/rifle.conf ~/.config/ranger/rifle.conf
 ln -s $dir/ranger/scope.sh ~/.config/ranger/scope.sh
+
+# Helper scripts
+cp utils/tmux_pipe.py ~/.local/bin/
