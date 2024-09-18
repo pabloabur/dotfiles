@@ -27,12 +27,12 @@ main() {
     for dir in "$base_dir"/*/; do
         # Check if the subdirectory is a git repository
         if is_git_repo "$dir"; then
-            diff_output=$(git -C "$dir" diff --name-only)
+            diff_output=$(git -C "$dir" status --porcelain)
             if [ -n "$diff_output" ]; then
                 echo "==============================================================================="
                 echo "Diff for repository: $dir"
                 echo "==============================================================================="
-                git -C "$dir" diff --name-only
+                git -C "$dir" status --short
                 echo ""
             fi
         else
