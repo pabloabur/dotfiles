@@ -42,7 +42,8 @@ bindsym $mod+Shift+v exec --no-startup-id st -e nvim -c VimwikiUISelect
 bindsym $mod+b exec --no-startup-id brave
 bindsym $mod+z exec --no-startup-id zathura
 bindsym $mod+c exec --no-startup-id st -e calcurse -D ~/Dropbox/calendar/
-bindsym $mod+n exec --no-startup-id st -e ranger
+#bindsym $mod+n exec --no-startup-id st -e ranger
+bindsym $mod+n exec --no-startup-id st -e nnn -ea
 bindsym --release Print exec scrot -s -f -q 100 -e 'mv $f ~/Screenshots'
 
 # kill focused window
