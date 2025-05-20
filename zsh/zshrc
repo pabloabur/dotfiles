@@ -39,6 +39,28 @@ alias ls='ls --color=auto'
 alias v='nvim'
 source ~/git/dotfiles/zsh/aliases.sh
 
+f(){
+    find "$1" -iname "$2"
+}
+ft(){
+    find "$1" -iname "$2" -type $3
+}
+gr(){
+    local excludes=()
+    while [[ "$1" == -xd || "$1" == -xf ]]; do
+        if [[ "$1" == -xd ]]; then
+            shift
+            excludes+=("--exclude-dir=$1")
+            shift
+        elif [[ "$1" == -xf ]]; then
+            shift
+            excludes+=("--exclude=$1")
+            shift
+        fi
+    done
+    grep "${excludes[@]}" -rni "$1" --color=always "${@:2}"
+}
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/pablo/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
