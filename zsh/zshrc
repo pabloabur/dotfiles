@@ -30,7 +30,10 @@ function chpwd() {
     ls -G
 }
 
-export QSYS_ROOTDIR="/home/pablo/.cache/yay/quartus-free/pkg/quartus-free/opt/altera/19.1/quartus/sopc_builder/bin"
+export QSYS_ROOTDIR="/home/pablo/.cache/paru/clone/quartus-free/pkg/quartus-free-quartus/opt/intelFPGA/23.1/quartus/sopc_builder/bin"
+export NNN_BMS='r:~/git;d:~/Downloads/;b:~/Dropbox'
+export EDITOR=nvim
+export NNN_PLUG='p:preview-tui;'
 
 alias ls='ls -G'
 alias v='nvim'
